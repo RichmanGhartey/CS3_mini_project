@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <!--head section begin-->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content=" order t-shirt buying t-shirt"/>
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0"/>
+    <link rel="shortcut icon" type="image/png" href="img/fav_mini.png"/>
+    <link rel="stylesheet" href="css/general.css" />
+    
+
+
+    <!--Awesome Font kit code-->
+    <script
+      src="https://kit.fontawesome.com/73c202f83e.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>landingpage</title>
+  </head>
+  
+  <!--body section begin-->
+  <body id = "homepage">
+   
+
+    <nav>
+      <input type="checkbox" id="check">
+      <label for="check" class="checkbtn">
+        <i class="fa-solid fa-bars"></i>
+      </label>
+      <a href="landingpage.html">
+        <label class="logo">online Purchase </label>
+     </a>
+
+            <ul>
+              
+              <li>
+              <a class="login" href="userlogin.html">Login</a>
+              </li>
+
+              <li>
+              <a class="signup" href="usersignup.html">Sign Up</a>
+              </li>
+
+            </ul>
+          </nav>
+        <!--navigation end-->
+          <main>
+            
+             <div class="content">
+             <h1 style="font-size:xx-large;" > <span class="logo" >Purchase t-shirt online </span></h1>
+             <p class="description" >Your hassle-free destination for diverse, customized t-shirt </t-shirt> orders.<br>Explore with convenience the world of t-shirts.</p>
+             <!--sign up link on the landing page-->
+             
+             <div class="wrapper_home">
+              <div class="title">
+                  Login Here
+              </div>
+      
+      <div class="form">
+<div class="input_field">
+<input type="text" placeholder="email" class="input" id="emailInput">
+<i class="fa-solid fa-envelope"></i>
+</div>
+<div class="input_field">
+<input type="password" placeholder="password" class="input" id="passwordInput">
+<i class="fa-solid fa-lock"></i>
+</div>
+<div style="text-align: center;">
+<button id="login" class="btn"><a href="#">login</a></button>
+</div>
+<span style="font-size: 10pt; color: black;">Don't have an account? <a
+href="usersignup.html">sign up here</a></span>
+</div>
+<script>
+document.getElementById('login').addEventListener('click', function (event) {
+event.preventDefault(); // Prevent the default behavior of the link
+const emailInput = document.getElementById('emailInput');
+const passwordInput = document.getElementById('passwordInput');
+// Trim the input to remove leading and trailing spaces
+const email = emailInput.value.trim();
+const password = passwordInput.value.trim();
+// Regular expression for email validation
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+// Perform validation
+if (email === '' || password === '') {
+alert('Please enter both email and password to login.');
+} else if (!emailRegex.test(email)) {
+alert('Please enter a valid email address.');
+} else if (password.length < 8) {
+alert('Password should be at least 8 characters long.');
+} else {
+// Here, you can proceed with the login logic
+// For example, submit the form or
+console.log('Login successful');
+}
+});
+</script>
+          </main>
+         
+
+  </body>
+  <script type ="module">
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-database.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDamNHxzIrfg2nM_FMhRJ9ZTbaszdP1j5g",
+    authDomain: "online-tshirt-purchase.firebaseapp.com",
+    databaseURL: "https://online-tshirt-purchase-default-rtdb.firebaseio.com",
+    projectId: "online-tshirt-purchase",
+    storageBucket: "online-tshirt-purchase.appspot.com",
+    messagingSenderId: "1069439184015",
+    appId: "1:1069439184015:web:7336e581779a28827f94fa",
+    measurementId: "G-PSCFVB0Z2C"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+const auth = getAuth();
+
+login.addEventListener('click', (e) => {
+  var email = document.getElementById('emailInput').value;
+  var password = document.getElementById('passwordInput').value;
+
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+
+      const dt = new Date();
+      update(ref(database, 'users/' + user.uid), {
+        last_login: dt,
+      });
+
+      alert('user logged in!');
+      // Redirect to landingpage2.html after successful login
+      window.location.href = "landingpage2.html";
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+
+      alert(errorMessage);
+    });
+});
+</script>
+  <!--body section end-->
+</html>

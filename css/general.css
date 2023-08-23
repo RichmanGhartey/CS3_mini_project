@@ -1,0 +1,657 @@
+/*@import url('https://fonts.googleapis.com/css?family=Allura|Josefin+Sans');*/
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	outline: none;
+	list-style: none;
+	text-decoration: none;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+}
+
+body{
+    background: linear-gradient(to right, #d3d2d2, #ffffff, #ffffff);
+	font-family: 'poppins', sans-serif;
+    /*animation-name: backgroundImageChange;
+    animation-duration: 30s;
+    animation-timing-function: ease-in;
+    animation-iteration-count: infinite;*/
+}
+
+
+body#homepage{
+    
+	background-image: src("img/cover.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: local;
+    height: calc(100vh - 80px);
+}
+body#homepage1{
+	background-image: url("bg3.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: local;
+    height: calc(100vh - 80px);
+}
+/*@keyframes backgroundImageChange {
+    0% {background-image: url('bg2.jpg');}
+    25% {background-image: url('bg3.jpg');}
+    50% {background-image: url('bg4.jpg');}
+    70% {background-image: url('bg5.jpg');}
+    100% {background-image: url('bg6.jpeg');}
+}*/
+
+/*navigation bar css begins*/
+.left-align {
+  color: white;
+  text-align: left;
+  margin: 0; 
+  font-weight: bold;
+  padding-right: 500px;
+}
+nav{
+    height: 70px;
+    width: 100%;
+    background-color:#4F4F4F;;
+} 
+
+.logo{
+    color: #03c7f3;
+    font-size:40px;
+    font-weight: bold;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+label.logo{
+    color: #fdfeff;
+    font-size:40px;
+    line-height: 70px;
+    padding: 0 50px;
+    font-weight: bold;
+    float: left;
+    font-family: 'Josefin Sans', sans-serif;
+    cursor: pointer;
+}
+
+.content{
+    width: 1200px;
+    height: auto;
+    margin: auto;
+    color: black;
+	font-weight: bold;
+    position: relative;
+}
+
+.content .description{
+    padding-left: 20px;
+    padding-bottom: 25px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+    letter-spacing: 1.2px;
+    line-height: 30px;   
+}
+
+.content h1{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+    font-size: 50px;
+    padding-left: 20px;
+    margin-top: 9%;
+    letter-spacing: 2px;
+}
+
+.explore{
+    width: 230px;
+    height: 40px;
+    border: none;
+    background: rgb(248, 245, 245);
+    color: black;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+    transition: .4s ease;
+}
+
+.explore a{
+    color: black;
+}
+
+.explore a:hover{
+    background: none;
+    color: white;
+}
+
+.explore:hover{
+    background: gray;
+}
+
+nav ul{
+    float: right;
+    margin-right: 20px;
+}
+
+nav ul li{
+    display: inline-block;
+    line-height: 70px;
+    margin: 0 5px;
+}
+
+nav ul li a {
+    color: white;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-transform: lowercase;
+}
+
+nav ul li a.login{
+    background: rgb(71, 70, 70);
+    color: white;
+}
+
+nav ul li a.login:hover{
+    background: white;
+    transition: .5s;
+    border-radius: 5px;
+    color: black;
+}
+
+a:hover{
+    background: rgb(71, 70, 70);
+    transition: .5s;
+    border-radius: 5px;
+}
+
+nav ul li a.signup{
+    background: whitesmoke;
+    color: black;
+}
+
+nav ul li a.signup:hover{
+    background: rgb(71, 70, 70);
+    transition: .5s;
+    border-radius: 5px;
+    color: white;
+}
+
+.form span a{
+    color: blue;
+    text-decoration: none;
+}
+
+.form span a:hover{
+    color: blue;
+    text-decoration: underline;
+    background: none;
+}
+
+.checkbtn{
+    font-size: 30px;
+    color: white;
+    float: right;
+    line-height: 70px;
+    margin-right: 35px;
+    cursor: pointer;
+    display: none;
+}
+
+#check{
+    display: none;
+}
+
+@media (max-width: 952px){
+    label.logo{
+        font-size: 30px;
+        padding-left: 50px;
+    }
+
+    nav ul li a{
+       font-size: 16px;
+    }
+}
+
+@media (max-width: 858px){
+    .checkbtn{
+        display: block;
+    }
+
+    ul{
+        background-color: gray;
+        z-index: 1;
+        border-radius: 5px;
+        padding: auto;
+        margin: auto;
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        top: 80px;
+        padding-top: 80px;
+        left: -100%;
+        text-align: center;
+        transition: all .5s;
+    }
+    nav ul li{
+        display: block;
+        margin: 50px 0;
+        line-height: 30px;
+    }
+    nav ul li a{
+        font-size: 20px;
+    }
+    a:hover{
+        background: none;
+        color: black;
+    }
+    #check:checked ~ ul{
+        left:0;
+    }
+}
+/*navigation bar css ends*/
+
+legend{
+    font-weight: bold;
+    color:darkgrey;
+}
+
+/*footer start*/
+
+
+footer div{
+    font-size: 15px;
+    margin: 20px auto 20px auto;
+}
+
+footer div a{
+    text-decoration: underline;
+    color: #03c7f3;
+}
+
+footer div a:hover{
+    color: white;
+    background: none;
+    border: none;
+    border-radius: 5px;
+}
+
+
+/*landing page login form*/
+.wrapper_home{
+    max-width: 350px;
+    width: 100%;
+    height: auto;
+    background: #f3f3f3;;
+    padding: 60px 45px;
+    position: absolute;
+    top: 80%;
+    left: 1000px;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+}
+
+.wrapper_home .title{
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: gray;
+}
+
+.wrapper_home .form .input_field{
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.wrapper_home .form .input_field .input{
+    width: 100%;
+    padding: 12px;
+    padding-left: 30px;
+    border: none;
+    background: #d3d2d2;
+    border-radius: 5px;
+}
+
+.wrapper_home .form .btn{
+    width: 70%;
+    margin: 20px auto 0;
+    background: gray;
+    padding: 12px;
+    margin-bottom: 15px;
+    text-align: center;
+    border-radius: 25px;
+    border: none;
+}
+
+.wrapper_home .form .btn:hover{
+    background: black;
+}
+
+.wrapper_home .form .btn a{
+    color: whitesmoke; 
+}
+
+.wrapper_home .form .btn a:hover{
+    color: whitesmoke;
+    background: none;
+}
+
+.wrapper_home .form .input_field i{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #3a3939;
+}
+
+/*independent sign up and login form*/
+.wrapper{
+    max-width: 350px;
+    width: 100%;
+    height: auto;
+    background: whitesmoke;
+    padding: 60px 45px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    border: none;
+}
+
+.wrapper .title{
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: #03c7f3;
+}
+
+
+.wrapper .form .input_field{
+     position: relative;
+     margin-bottom: 10px;
+}
+
+.wrapper .form .input_field .input{
+    width: 100%;
+    padding: 12px;
+    padding-left: 30px;
+    border: none;
+    background: #d3d2d2;
+    border-radius: 5px;
+}
+
+.wrapper .form .btn{
+    width: 70%;
+    margin: 20px auto;
+    background:#03c7f3;
+    padding: 12px;
+    margin-bottom: 15px;
+    text-align: center;
+    border-radius: 25px;
+}
+.wrapper .form .btn:hover{
+    background: black;
+}
+
+.wrapper .form .btn a{
+    color: whitesmoke; 
+}
+
+.wrapper .form .btn a:hover{
+    color: whitesmoke;
+    background: none;
+}
+
+.wrapper .form .input_field i{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #3a3939;
+}
+
+::placeholder{
+    color: #3a3939;
+}
+
+::value{
+    color: #3a3939;
+}
+
+.pheading{
+    text-align: center;
+    margin: 50px 0;
+    color: black;
+}
+
+.sec{
+    padding: 10px 5%;
+}
+
+.meal .card{
+    width: 310px;
+    background: whitesmoke;
+    box-shadow: 0 10px 20px black;
+    padding: 5px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.meal .card img{
+    height: 250px;
+    width: 100%;
+}
+
+.meal .card .description{
+    padding: 5px 20px;
+    opacity: 0.8;
+}
+
+.meal .card .title{
+    font-weight: 900;
+    font-size: 20px;
+    color: black;
+    padding: 0 20px;
+}
+
+.meal .card .box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.meal .card .box .price{
+    color: green;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.meal .card .box .butn{
+    font-size: 13px;
+    color: green;
+    padding: 10px 18px;
+    font-weight: 900;
+    border: 1px solid green;
+    border-radius: 20px;
+}
+
+.meal .card .box .butn:hover{
+    cursor: pointer;
+    background-color: green;
+    color: white;
+}
+
+.meal{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.location{
+    max-width: 800px;
+    width: 100%;
+    height: auto;
+    background: whitesmoke;
+    padding: 60px 45px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+}
+
+.location h1{
+	text-align: center;
+    margin-bottom: 10px;
+}
+
+.location select{
+    display: block;
+    text-align: center;
+    width: 50%;
+    height: 30px;
+    margin: 10px auto 10px auto;
+    font-weight: 600;
+    font-display: 0.8;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+}
+
+.location .info input{
+    width: 50%;
+    margin: 20px auto 10px auto;
+    padding: 12px;
+    padding-left: 30px;
+    border: none;
+    text-align: left;
+    border-radius: 5px;
+}
+
+label{
+    text-align: left;
+}
+
+.location .butn{
+    font-size: 13px;
+    color: green;
+    padding: 10px 18px;
+    font-weight: 900;
+    border: 1px solid green;
+    border-radius: 20px;
+    margin-top: 5px;
+    float: right;
+}
+
+.butn:hover{
+    cursor: pointer;
+    background-color: green;
+    color: white;
+}
+
+.butn a{
+    color: green;
+}
+
+.butn a:hover{
+    background-color: green;
+    color: white;
+    text-decoration: none;
+    background: none;
+}
+
+.profile{
+	color: white;
+    width: auto;
+    height: auto;
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+	font-family: 'poppins', sans-serif;
+    /*animation-name: backgroundImageChange;
+    animation-duration: 30s;
+    animation-timing-function: ease-in;
+    animation-iteration-count: infinite;*/
+};
+
+
+
+.profile .userphoto{
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;    
+}
+
+.profile .info{
+	color: white;
+    position: relative;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 12px;
+    padding-left: 30px;
+    border: none;
+    border-radius: 5px;
+}
+
+.profile .info label{
+    display: inline-block;
+    width: 100px;
+    text-align: left;
+}
+.profile .info input{
+    width: 50%;
+    margin-top: 10px;
+    padding: 12px;
+    padding-left: 30px;
+    border: none;
+    text-align: left;
+    border-radius: 5px;
+}
+
+.profile .signout{
+    font-size: 15px;
+    width: 300px;
+    color: white;
+    padding: 10px 18px;
+    font-weight: 900;
+    background-color: red;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+.profile .signout:hover{
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid red;
+
+    color: red;
+}
+
+video{
+    width: 90px;
+    height: 90px;
+    border-radius: 45px;
+}
+/* Tooltip container
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+
+Tooltip text
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+<div class="tooltip">Hover over me
+  <span class="tooltiptext">Tooltip text</span>
+</div>*/

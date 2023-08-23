@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head>
+<meta name="keywords" content="bookfood food order food mealbooking meals" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="shortcut icon" type="image/png" href="img/fav_mini.png"/>
+<link rel="stylesheet" href="css/general.css"  />
+<link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+<!--Awesome Font kit code-->
+<script
+src="https://kit.fontawesome.com/73c202f83e.js"
+crossorigin="anonymous"
+></script>
+<title>Sign Up</title>
+</head>
+<body>
+<nav>
+<a href="landingpage.html">
+<label class="logo">t-shirt online</label>
+</a>
+</nav>
+<div class="wrapper">
+<div class="title">
+Sign Up Here
+</div>
+<div class="form" id = "signupform">
+<div class="input_field">
+<input type="text" name="Name" placeholder="name" class="input" id ="Name">
+<i class="fa-solid fa-user"></i>
+</div>
+<div class="input_field">
+  <input type="text" name="phoneid" placeholder="Phone Number" class="input" id="phoneid" value="+233" maxlength="12">
+  <i class="fa-solid fa-phone"></i>
+</div>
+<script>
+const phoneInput = document.getElementById('phoneid');
+
+phoneInput.addEventListener('input', function (event) {
+  const countryCode = '+233';
+  const currentValue = event.target.value;
+
+  // Check if the current value starts with the country code
+  if (!currentValue.startsWith(countryCode)) {
+    // If not, reset the input value to the country code
+    event.target.value = countryCode;
+  }
+});
+</script>
+
+
+<div class="input_field">
+<input type="text" name="Email" placeholder="example@email.com" class="input" id ="Email">
+<i class="fa-solid fa-envelope"></i>
+</div>
+<div class="input_field">
+<input type="password" name="Password" placeholder="password" class="input" id ="Password">
+<i class="fa-solid fa-lock"></i>
+</div>
+<div class="input_field">
+<input type="password" placeholder="re-enter password" id="confirmPassword"
+class="input">
+<i class="fa-solid fa-lock"></i>
+</div>
+<div style="text-align: center;">
+<button id="signup" class="btn"><a href="#">sign up</a></button>
+</div>
+<br>
+<span style="font-size: 11pt;">Already have an account? <a
+href="userlogin.html">login</a></span>
+</div>
+</div>
+
+<script>
+document.getElementById('signup').addEventListener('click', function (event) {
+event.preventDefault(); // Prevent the default behavior of the link
+const nameInput = document.querySelector('input[name="Name"]');
+const emailInput = document.querySelector('input[name="Email"]');
+const passwordInput = document.querySelector('input[name="Password"]');
+const reEnterPasswordInput = document.getElementById('confirmPassword');
+// Trim the inputs to remove leading and trailing spaces
+const name = nameInput.value.trim();
+const email = emailInput.value.trim();
+const password = passwordInput.value.trim();
+const reEnterPassword = reEnterPasswordInput.value.trim();
+// Regular expression for email validation
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+// Perform validation
+if (name === '' || email === '' || password === '' || reEnterPassword === '') {
+alert('Please fill in all the fields.');
+} else if (!emailRegex.test(email)) {
+alert('Please enter a valid email address.');
+} else if (password.length < 8) {
+alert('Password should be at least 8 characters long.');
+} else if (password !== reEnterPassword) {
+alert('Passwords do not match. Please re-enter the password correctly.');
+} else {
+// Here, you can proceed with the sign-up logic
+// For example, submit the form or make an API call for registration.
+// For this example, we'll just log a message.
+console.log('Sign up successful');
+}
+});
+</script>
+</body>
+<script type="module">
+ // Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-database.js";
+import { getAuth, createUserWithEmailAndPassword,onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDamNHxzIrfg2nM_FMhRJ9ZTbaszdP1j5g",
+    authDomain: "online-tshirt-purchase.firebaseapp.com",
+    databaseURL: "https://online-tshirt-purchase-default-rtdb.firebaseio.com",
+    projectId: "online-tshirt-purchase",
+    storageBucket: "online-tshirt-purchase.appspot.com",
+    messagingSenderId: "1069439184015",
+    appId: "1:1069439184015:web:7336e581779a28827f94fa",
+    measurementId: "G-PSCFVB0Z2C"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+const auth = getAuth();
+
+signup.addEventListener('click', (e) => {
+  var name = document.getElementById('Name').value;
+  var email = document.getElementById('Email').value;
+  var phoneid = document.getElementById('phoneid').value;
+  var password = document.getElementById('Password').value;
+
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+
+      // Set user data in the database using the 'set' function
+      set(ref(database, 'users/' + user.uid), {
+        name: name, // Corrected from 'name = name' to 'name: name'
+        email: email, // Corrected from 'email = email' to 'email: email'
+		phoneid: phoneid,
+      });
+	  
+	   alert('user Signed up!');
+      // Redirect to landingpage2.html after successful signup
+      window.location.href = "userlogin.html";
+	  
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // Handle error
+    });
+});
+
+const user = auth.currentUser;
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/auth.user
+    const uid = user.uid;
+    // ...
+  } else {
+    // User is signed out
+    // ...
+  }
+});
+</script>
+</html>

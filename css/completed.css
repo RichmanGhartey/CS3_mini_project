@@ -1,0 +1,19 @@
+body{
+ background-color:  #4bae4f;
+    color: beige;
+}
+
+.complete{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+}
+
+img{
+    border: 10px solid #fff ;
+}
+
+#id{
+    background-color: #fff;
+}
